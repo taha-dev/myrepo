@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class UpdateUsersTable extends Migration
+class Post extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,15 @@ class UpdateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function(Blueprint $t){
-            $t->string('phone', 15)->nullable()->after('email');
-            $t->string('user_pic', 150)->nullable()->after('phone');
+        Schema::create('posts', function(Blueprint $table){
+            $table->id();
+            $table->integer('user_id');
+            $table->string('title', 100);
+            $table->text('description');
+            $table->string('post_img', 100);
+            $table->timestamps();
         });
+            
     }
 
     /**
@@ -26,6 +31,6 @@ class UpdateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropColumn(['phone', 'user_pic']);
+        //
     }
 }

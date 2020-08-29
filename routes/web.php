@@ -15,17 +15,15 @@ use Illuminate\Http\Request;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/xyz', function () {
     return view('practice.index');
+})->middleware('auth');
+Route::get('/sign-in',function(){
+    return view('practice.pages.examples.sign-in');
 });
-
-Route::post('/xyz', function(Request $r){
-    //return 'xzy';
-    return $r->input();
-})->name('formsubmit');
-
+Route::get('/Editors', function()
+{
+    return view('practice.pages.forms.editors');
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

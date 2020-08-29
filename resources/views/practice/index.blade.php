@@ -290,7 +290,11 @@
                             <li><a href="javascript:void(0);"><i class="material-icons">shopping_cart</i>Sales</a></li>
                             <li><a href="javascript:void(0);"><i class="material-icons">favorite</i>Likes</a></li>
                             <li role="separator" class="divider"></li>
-                            <li><a href="javascript:void(0);"><i class="material-icons">input</i>Sign Out</a></li>
+                            <li><a href="{{ route('logout')}}" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="material-icons">input</i>Sign Out</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -464,7 +468,7 @@
                                 <a href="pages/forms/form-wizard.html">Form Wizard</a>
                             </li>
                             <li>
-                                <a href="pages/forms/editors.html">Editors</a>
+                                <a href="/editors">Editors</a>
                             </li>
                         </ul>
                     </li>
